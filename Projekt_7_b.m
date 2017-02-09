@@ -103,7 +103,7 @@ hold off
 B4=fit(B4_x',B4_y','linearinterp'); %polinom
 h4=coeffvalues(B4); %koeficjenti polinoma
 
-%Nari?emo graf ter ga shranimo za (F4_x,F4_y)
+%Nari?emo graf ter ga shranimo za (B4_x,B4_y)
 fig4b=figure;
 plot(B4, '-r',B4_x,B4_y,'ro');
 hold on
