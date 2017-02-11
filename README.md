@@ -1,1 +1,1 @@
-# obcutljivost-CLP
+# Ob\UTF{010D}utljivost celo\UTF{0161}tevilskega linearnega programa

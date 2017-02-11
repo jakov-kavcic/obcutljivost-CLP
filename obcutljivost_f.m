@@ -1,26 +1,17 @@
-% V tem delu bomo definirali osnovni problem, ki bo velikosti 4x4. Vektor x
-% bo imel stiri spremenljivke. Matrika A bo velikosti 4x4. Vektor b bo imel
-% 4 omejitve. Funkcija f pa bo vsebovala ?tiri koeficjente.
+function [fig,fig1,fig2,fig3,fig4] = obcutljivost_f(A,b,f,s,options)
 
-set(0,'DefaultFigureVisible','off'); % Da se ne ska?ejo grafi ceu ?as
-
-A=[1,-2,3,4;
-    2,-3,4,5;
-    1,-3,5,7;
-    2,-4,6,8];
-f=[6,12,3,6];
-b=[10,10,10,10];
+%dolo?imo spremenljivke, ki morajo biti celo?tevilske
 intcon=[1,2,3,4];
-options = optimoptions('intlinprog','TolFun',1e-6,'Display', 'off' );
 
+%Dolocimo prvo reisitev
 prva_resitev=intlinprog(f,intcon,A,b,[],[],[1,1,1,1],[inf,inf,inf,inf],options);
 
 % Spreminjamo vrednosti namenske funkcije
 for i = 1:4 
     j=1;
     o=f(i);
-    for n = 1:30 %naredimo 20 iteracij poskusa
-        df=-8+18*rand(); % random spremenljivka z intervala (-8,10)
+    for n = 1:s %naredimo s iteracij poskusa
+        df=-10+20*rand(); % random spremenljivka z intervala (-10,10)
         f(i)=f(i)+df;
         [x,fval,exitflag,output]=intlinprog(f,intcon,A,b,[],[],[1,1,1,1],[1000,1000,1000,1000],options);
         F(i,j)=fval;
@@ -47,7 +38,6 @@ title('Spremembe f-a');
 xlabel('sprememba f');
 ylabel('optimalna vrednost');
 legend('sprememba prvega koeficjenta','sprememba drugega koeficjenta','sprememba tretjega koeficjenta','sprememba cetrtega koeficjenta','originalna resitev');
-print(fig,'spremembe_f','-dpng');
 hold off
 
 %Najdemo najbolj?e prilagajo?i polinom druge stopnje za mno?ico to?k (F1_x,F1_y)
@@ -63,7 +53,6 @@ title('Spremembe prvega koeficjenta namenske funkcije');
 xlabel('sprememba koeficjenta');
 ylabel('optimalna vrednost');
 text(0,f1(0)-1,texlabel(f1)) % ena?ba funkcije koeficjenti so k1
-print(fig1,'spremembe_f1','-dpng');
 hold off
 
 %Najdemo najbolj?e prilagajo?i polinom druge stopnje za mno?ico to?k (F2_x,F2_y)
@@ -79,7 +68,6 @@ title('Spremembe drugega koeficjenta namenske funkcije');
 xlabel('sprememba koeficjenta');
 ylabel('optimalna vrednost');
 text(0,f1(0)-1,texlabel(f2)) % ena?ba funkcije koeficjenti so k2
-print(fig2,'spremembe_f2','-dpng');
 hold off
 
 %Najdemo najbolj?e prilagajo?i polinom druge stopnje za mno?ico to?k (F3_x,F3_y)
@@ -95,7 +83,6 @@ title('Spremembe tretjega koeficjenta namenske funkcije');
 xlabel('sprememba koeficjenta');
 ylabel('optimalna vrednost');
 text(0,f3(0)-1,texlabel(f3)) % ena?ba funkcije koeficjenti so k3
-print(fig3,'spremembe_f3','-dpng');
 hold off
 
 %Najdemo najbolj?e prilagajo?i polinom druge stopnje za mno?ico to?k (F4_x,F4_y)
@@ -111,9 +98,8 @@ title('Spremembe cetrtega koeficjenta namenske funkcije');
 xlabel('sprememba koeficjenta');
 ylabel('optimalna vrednost');
 text(0,f4(0)-1,texlabel(f4)) % ena?ba funkcije koeficjenti so k4
-print(fig4,'spremembe_f4','-dpng');
 hold off
 
-
+end
 
 
