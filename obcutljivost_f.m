@@ -1,12 +1,13 @@
-function [fig,fig1,fig2,fig3,fig4] = obcutljivost_f(A,b,f,s,options)
+function [fig,fig1,fig2,fig3,fig4,X1,X2,X3,X4] = obcutljivost_f(A,b,f,s,options)
 
 %dolo?imo spremenljivke, ki morajo biti celo?tevilske
 intcon=[1,2,3,4];
 
 %Dolocimo prvo reisitev
-prva_resitev=intlinprog(f,intcon,A,b,[],[],[1,1,1,1],[inf,inf,inf,inf],options);
+prva_resitev=intlinprog(f,intcon,A,b,[],[],[1,1,1,1],[1000,1000,1000,1000],options);
 
 % Spreminjamo vrednosti namenske funkcije
+h=1;
 for i = 1:4 
     j=1;
     o=f(i);
@@ -16,7 +17,9 @@ for i = 1:4
         [x,fval,exitflag,output]=intlinprog(f,intcon,A,b,[],[],[1,1,1,1],[1000,1000,1000,1000],options);
         F(i,j)=fval;
         F(i,j+1)=df;
+        X(:,h)=x;
         j=j+2;
+        h=h+1;
         f(i)=o;
     end
 end
@@ -29,9 +32,14 @@ F2_x=F(2,2:2:end);
 F3_y=F(3,1:2:end);
 F3_x=F(3,2:2:end);     
 F4_y=F(4,1:2:end);
-F4_x=F(4,2:2:end); 
+F4_x=F(4,2:2:end);
+X1=X(:,1:s);
+X2=X(:,s+1:2*s);
+X3=X(:,2*s+1:3*s);
+X4=X(:,3*s+1:4*s);
 
-%nari?emo vse spremembe skupaj
+    
+%narisemo vse spremembe skupaj
 fig=figure;
 plot(F1_x,F1_y,'c*',F2_x,F2_y,'k*',F3_x,F3_y,'g*',F4_x,F4_y,'b*',[0],f*prva_resitev,'ro');
 title('Spremembe f-a');
@@ -44,20 +52,48 @@ hold off
 f1=fit(F1_x',F1_y','poly2'); %polinom
 k1=coeffvalues(f1); %koeficjenti polinoma
 
+%Ali se spreminja re?itev?
+a1=0;
+for i=2:s
+    for j=1:4
+        if X1(j,i)~=X1(j,i-1)
+            a1=1;
+        end
+    end
+end
+if a1~=0;
+    a1_t='Resitev se spreminja.';
+else a1_t='Resitev se ne spreminja.';
+end
+
 %Nari?emo graf ter ga shranimo za (F1_x,F1_y)
 fig1=figure;
 plot(f1, '-g',F1_x,F1_y,'c*');
 hold on
 plot([0],f*prva_resitev,'ro')
 title('Spremembe prvega koeficjenta namenske funkcije');
-xlabel('sprememba koeficjenta');
+xlabel('sprememba koeficjenta~');
 ylabel('optimalna vrednost');
-text(0,f1(0)-1,texlabel(f1)) % ena?ba funkcije koeficjenti so k1
+text(0,f1(0)-1,a1_t) % ena?ba funkcije koeficjenti so k1
 hold off
 
 %Najdemo najbolj?e prilagajo?i polinom druge stopnje za mno?ico to?k (F2_x,F2_y)
 f2=fit(F2_x',F2_y','poly2'); %polinom
 k2=coeffvalues(f2); %koeficjenti polinoma
+
+%Ali se spreminja re?itev?
+a2=0;
+for i=2:s
+    for j=1:4
+        if X2(j,i)~=X2(j,i-1)
+            a2=1;
+        end
+    end
+end
+if a2~=0;
+    a2_t='Resitev se spreminja.';
+else a2_t='Resitev se ne spreminja.';
+end
 
 %Nari?emo graf ter ga shranimo za (F2_x,F2_y)
 fig2=figure;
@@ -67,12 +103,26 @@ plot([0],f*prva_resitev,'ro')
 title('Spremembe drugega koeficjenta namenske funkcije');
 xlabel('sprememba koeficjenta');
 ylabel('optimalna vrednost');
-text(0,f1(0)-1,texlabel(f2)) % ena?ba funkcije koeficjenti so k2
+text(0,f1(0)-1,a2_t)
 hold off
 
 %Najdemo najbolj?e prilagajo?i polinom druge stopnje za mno?ico to?k (F3_x,F3_y)
 f3=fit(F3_x',F3_y','poly2'); %polinom
 k3=coeffvalues(f3); %koeficjenti polinoma
+
+%Ali se spreminja re?itev?
+a3=0;
+for i=2:s
+    for j=1:4
+     if X3(j,i)~=X3(j,i-1)
+        a3=1;
+     end
+    end
+end
+if a3~=0;
+    a3_t='Resitev se spreminja.';
+else a3_t='Resitev se ne spreminja.';
+end
 
 %Nari?emo graf ter ga shranimo za (F3_x,F3_y)
 fig3=figure;
@@ -82,12 +132,26 @@ plot([0],f*prva_resitev,'ro')
 title('Spremembe tretjega koeficjenta namenske funkcije');
 xlabel('sprememba koeficjenta');
 ylabel('optimalna vrednost');
-text(0,f3(0)-1,texlabel(f3)) % ena?ba funkcije koeficjenti so k3
+text(0,f3(0)-1,a3_t)
 hold off
 
 %Najdemo najbolj?e prilagajo?i polinom druge stopnje za mno?ico to?k (F4_x,F4_y)
 f4=fit(F4_x',F4_y','poly2'); %polinom
 k4=coeffvalues(f4); %koeficjenti polinoma
+
+%Ali se spreminja re?itev?
+a4=0;
+for i=2:s
+    for j=1:4
+        if X4(j,i)~=X4(j,i-1)
+            a4=1;
+        end
+    end
+end
+if a4~=0;
+    a4_t='Resitev se spreminja.';
+else a4_t='Resitev se ne spreminja.';
+end
 
 %Nari?emo graf ter ga shranimo za (F4_x,F4_y)
 fig4=figure;
@@ -97,7 +161,7 @@ plot([0],f*prva_resitev,'ro')
 title('Spremembe cetrtega koeficjenta namenske funkcije');
 xlabel('sprememba koeficjenta');
 ylabel('optimalna vrednost');
-text(0,f4(0)-1,texlabel(f4)) % ena?ba funkcije koeficjenti so k4
+text(0,f4(0)-1,a4_t) % ena?ba funkcije koeficjenti so k4
 hold off
 
 end
