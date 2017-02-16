@@ -77,5 +77,17 @@ hold off
 print(Viz2,'viz2','-dpng');
 
 
+%Vizualizacija za namensko funkcijo
+A=1:10;
+B=A*1.3+16;
+C=A*4;
+
+as=figure;
+plot(A,B,'-r',A,C,'-g');
+title('Vizualizacija za namensko funkcijo')
+print(as,'primer_f3','-dpng')
+
+
+
 
 
