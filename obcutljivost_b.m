@@ -107,6 +107,7 @@ plot([0],f*prva_resitev,'gx')
 title('Spremembe drugega koeficienta omejitvenega vektorja');
 xlabel('sprememba koeficienta');
 ylabel('optimalna vrednost');
+legend('optimalne vrednosti', 'krivulja');
 text(0,B2(0)+1,b2_t)
 hold off
 

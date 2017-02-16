@@ -69,7 +69,7 @@ xlabel('x');
 ylabel('y');
 zlabel('vrednost namenske funkcije');
 grid on
-title('Vpliv omejitvenega vektorja')
+title('Vpliv namenskega vektorja')
 legend('Dopustne resitve','Vrednost namenske funkcije','Vrednosti namenske funkcije po spremembi');
 fill3([1,1 ; 1,1 ; 7/5,7/5 ; 9/2,9/2]',[1,1 ; 6,6 ; 36/5,36/5 ; 1,1,]',[0,2 ; 0,32 ; 0,188/5; 0,-12]','b') %brez sprememb crte
 fill3([1,1 ; 1,1 ; 7/5,7/5 ; 9/2,9/2]',[1,1 ; 6,6 ; 36/5,36/5 ; 1,1,]',[0,7 ; 0,37 ; 0,44.6; 0,10.5]','b') % crte za spremenjeno
