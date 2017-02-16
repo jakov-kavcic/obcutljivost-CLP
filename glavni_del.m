@@ -6,21 +6,21 @@
 
 
 %Ta deluje vendar se resitev ne spreminja pod vplivom f-a (CLP-1)
-A=[1,-2,3,4;    %Matrika koeficjentov
-    9,-3,4,5;
-    1,-3,5,7;
-    2,-4,-5,13]; 
-f=[10,10,10,10];   %Vektor namenskih koeficjentov
-b=[12,12,12,12]; %Vektor omejitvenih vrednosti
+% A=[1,-2,3,4;    %Matrika koeficjentov
+%     9,-3,4,5;
+%     1,-3,5,7;
+%     2,-4,-5,13]; 
+% f=[10,10,10,10];   %Vektor namenskih koeficjentov
+% b=[12,12,12,12]; %Vektor omejitvenih vrednosti
 
-% % Ta deluje in zanimivi rezultati za spremembe f-a, morda bi se dalo
-% % prisilit da se bolj spreminja (CLP-2)
-% A=[2,6,-3,-3;
-%     2,4,1,-1;
-%     -4,-7,-4,-5;
-%     7,-3,-4,-5]; 
-% f=[-10,-10,-10,-10];   %Vektor namenskih koeficjentov
-% b=[12,12,-12,12];
+% Ta deluje in zanimivi rezultati za spremembe f-a, morda bi se dalo
+% prisilit da se bolj spreminja (CLP-2)
+A=[2,6,-3,-3;
+    2,4,1,-1;
+    -4,-7,-4,-5;
+    7,-3,-4,-5]; 
+f=[-10,-10,-10,-10];   %Vektor namenskih koeficjentov
+b=[12,12,-12,12];
 
 
 set(0,'DefaultFigureVisible','off'); % Da se ne ska?ejo grafi ceu ?as

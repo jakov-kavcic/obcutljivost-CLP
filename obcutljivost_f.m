@@ -72,9 +72,9 @@ plot(f1, '-g',F1_x,F1_y,'c*');
 hold on
 plot([0],f*prva_resitev,'ro')
 title('Spremembe prvega koeficienta namenske funkcije');
-xlabel('sprememba koeficienta~');
+xlabel('sprememba koeficienta');
 ylabel('optimalna vrednost');
-text(0,f1(0)-1,a1_t) % enacba funkcije koeficjenti so k1
+text(0,f1(0)-1,a1_t)
 hold off
 
 %Najdemo najboljse prilagajoci polinom druge stopnje za mnozico tock (F2_x,F2_y)
@@ -161,7 +161,7 @@ plot([0],f*prva_resitev,'ro')
 title('Spremembe cetrtega koeficienta namenske funkcije');
 xlabel('sprememba koeficienta');
 ylabel('optimalna vrednost');
-text(0,f4(0)-1,a4_t) % enacba funkcije koeficienti so k4
+text(0,f4(0)-1,a4_t)
 hold off
 
 end

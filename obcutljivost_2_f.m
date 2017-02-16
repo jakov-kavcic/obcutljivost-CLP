@@ -5,7 +5,7 @@ intcon=[1,2];
 %Dolocimo prvo reisitev
 prva_resitev=intlinprog(f,intcon,A,b,[],[],[1,1],[inf,inf],options);
 
-options = optimoptions('intlinprog','TolFun',1e-6,'Display', 'off' );
+options = optimoptions('intlinprog','TolInteger',1e-6,'Display', 'off' );
 
 X=[];
 h=1;
@@ -68,7 +68,7 @@ plot([0],f*prva_resitev,'ro')
 title('Spremembe prvega koeficienta namenske funkcije');
 xlabel('sprememba koeficienta');
 ylabel('optimalna vrednost');
-text(0,f1(0)-1,a1_t) % enacba funkcije koeficienti so k1
+text(0,f1(0)-1,a1_t)
 hold off
 
 %Najdemo najboljse prilagajoci polinom druge stopnje za mnozico tock (F2_x,F2_y)
@@ -96,7 +96,7 @@ plot([0],f*prva_resitev,'ro')
 title('Spremembe drugega koeficienta namenske funkcije');
 xlabel('sprememba koeficienta');
 ylabel('optimalna vrednost');
-text(0,f1(0)-1,a2_t) % enacba funkcije koeficienti so k2
+text(0,f1(0)-1,a2_t)
 hold off
 
 
