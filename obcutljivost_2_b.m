@@ -1,7 +1,6 @@
-
 function [figb,fig1b,fig2b,Y1,Y2] = obcutljivost_2_b(A,b,f,s,options)
 
-%dolo?imo spremenljivke, ki morajo biti celo?tevilske
+%dolocimo spremenljivke, ki morajo biti celostevilske
 intcon=[1,2];
 
 %Dolocimo prvo reisitev
@@ -34,19 +33,19 @@ B2_x=B(2,2:2:end);
 Y1=Y(:,1:s);
 Y2=Y(:,s+1:2*s);
 
-%Nari?emo vse spremembe skupaj
+%Narisemo vse spremembe skupaj
 figb=figure;
 plot(B1_x,B1_y,'c*',B2_x,B2_y,'k*',[0],f*prva_resitev,'ro');
 title('spremembe b-ja');
 xlabel('sprememba b');
 ylabel('optimalna vrednost');
-legend('sprememba prvega koeficjenta','sprememba drugega koeficjenta','originalna resitev');
+legend('sprememba prvega koeficienta','sprememba drugega koeficienta','originalna resitev');
 hold off
 
 
-%Najdemo najbolj?e prilagajo?i graf za mno?ico to?k (B1_x,B1_y)
+%Najdemo najboljse prilagajoci graf za mnozico tock (B1_x,B1_y)
 B1=fit(B1_x',B1_y','linearinterp'); %polinom
-h1=coeffvalues(B1); %koeficjenti polinoma
+h1=coeffvalues(B1); %koeficienti polinoma
 
 b1=0;
 for i=2:s
@@ -61,20 +60,20 @@ if b1~=0;
 else b1_t='Resitev se ne spreminja.';
 end
 
-%Nari?emo graf ter ga shranimo za (B1_x,B1_y)
+%Narisemo graf ter ga shranimo za (B1_x,B1_y)
 fig1b=figure;
 plot(B1, '-r',B1_x,B1_y,'ro');
 hold on
 plot([0],f*prva_resitev,'gx')
-title('Spremembe prvega koeficjenta omejitvenega vektorja');
-xlabel('sprememba koeficjenta');
+title('Spremembe prvega koeficienta omejitvenega vektorja');
+xlabel('sprememba koeficienta');
 ylabel('optimalna vrednost');
 text(0,B1(0)+1,b1_t)
 hold off
 
-%Najdemo najbolj?e prilagajo?i graf za mno?ico to?k (B2_x,B2_y)
+%Najdemo najboljse prilagajoci graf za mnozico tock (B2_x,B2_y)
 B2=fit(B2_x',B2_y','linearinterp'); %polinom
-h2=coeffvalues(B2); %koeficjenti polinoma
+h2=coeffvalues(B2); %koeficienti polinoma
 
 %Ali se optimalna resitev spreminja?
 b2=0;
@@ -90,13 +89,13 @@ if b2~=0;
 else b2_t='Resitev se ne spreminja.';
 end
 
-%Nari?emo graf ter ga shranimo za (B2_x,B2_y)
+%Narisemo graf ter ga shranimo za (B2_x,B2_y)
 fig2b=figure;
 plot(B2, '-r',B2_x,B2_y,'ro');
 hold on
 plot([0],f*prva_resitev,'gx')
-title('Spremembe drugega koeficjenta omejitvenega vektorja');
-xlabel('sprememba koeficjenta');
+title('Spremembe drugega koeficienta omejitvenega vektorja');
+xlabel('sprememba koeficienta');
 ylabel('optimalna vrednost');
 text(0,B1(0)+1,b2_t)
 hold off

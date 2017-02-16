@@ -1,7 +1,6 @@
-
 function [figb,fig1b,fig2b,fig3b,fig4b,Y1,Y2,Y3,Y4] = obcutljivost_b(A,b,f,s,options)
 
-%dolo?imo spremenljivke, ki morajo biti celo?tevilske
+%dolocimo spremenljivke, ki morajo biti celostevilske
 intcon=[1,2,3,4];
 
 %Dolocimo prvo reisitev
@@ -43,21 +42,21 @@ Y3=Y(:,2*s+1:3*s);
 Y4=Y(:,3*s+1:4*s);
 
 
-%Nari?emo vse spremembe skupaj
+%Narisemo vse spremembe skupaj
 figb=figure;
 plot(B1_x,B1_y,'c*',B2_x,B2_y,'k*',B3_x,B3_y,'g*',B4_x,B4_y,'b*',[0],f*prva_resitev,'ro');
 title('spremembe b-ja');
 xlabel('sprememba b');
 ylabel('optimalna vrednost');
-legend('sprememba prvega koeficjenta','sprememba drugega koeficjenta','sprememba tretjega koeficjenta','sprememba cetrtega koeficjenta','originalna resitev');
+legend('sprememba prvega koeficienta','sprememba drugega koeficienta','sprememba tretjega koeficienta','sprememba cetrtega koeficienta','originalna resitev');
 hold off
 
 
-%Najdemo najbolj?e prilagajo?i graf za mno?ico to?k (B1_x,B1_y)
+%Najdemo najboljse prilagajoci graf za mnozico tock (B1_x,B1_y)
 B1=fit(B1_x',B1_y','linearinterp'); %polinom
-h1=coeffvalues(B1); %koeficjenti polinoma
+h1=coeffvalues(B1); %koeficienti polinoma
 
-%Ali se optimalna resitev spreminja
+%Ali se optimalna resitev spreminja?
 b1=0;
 for i=2:s
     for j=1:4
@@ -71,27 +70,27 @@ if b1~=0;
 else b1_t='Resitev se ne spreminja.';
 end
 
-%Nari?emo graf ter ga shranimo za (B1_x,B1_y)
+%Narisemo graf ter ga shranimo za (B1_x,B1_y)
 fig1b=figure;
 plot(B1, '-r',B1_x,B1_y,'ro');
 hold on
 plot([0],f*prva_resitev,'gx')
-title('Spremembe prvega koeficjenta omejitvenega vektorja');
-xlabel('sprememba koeficjenta');
+title('Spremembe prvega koeficienta omejitvenega vektorja');
+xlabel('sprememba koeficienta');
 ylabel('optimalna vrednost');
 text(0,B1(0)+1,b1_t)
 hold off
 
-%Najdemo najbolj?e prilagajo?i graf za mno?ico to?k (B2_x,B2_y)
+%Najdemo najboljse prilagajoci graf za mnocico to?k (B2_x,B2_y)
 B2=fit(B2_x',B2_y','linearinterp'); %polinom
-h2=coeffvalues(B2); %koeficjenti polinoma
+h2=coeffvalues(B2); %koeficienti polinoma
 
 %Ali se optimalna resitev spreminja
 b2=0;
 for i=2:s
     for j=1:4
      if Y2(j,i)~=Y2(j,i-1)
-        b1=1;
+        b2=1;
      end
     end
 end
@@ -100,22 +99,22 @@ if b2~=0;
 else b2_t='Resitev se ne spreminja.';
 end
 
-%Nari?emo graf ter ga shranimo za (B2_x,B2_y)
+%Narisemo graf ter ga shranimo za (B2_x,B2_y)
 fig2b=figure;
 plot(B2, '-r',B2_x,B2_y,'ro');
 hold on
 plot([0],f*prva_resitev,'gx')
-title('Spremembe drugega koeficjenta omejitvenega vektorja');
-xlabel('sprememba koeficjenta');
+title('Spremembe drugega koeficienta omejitvenega vektorja');
+xlabel('sprememba koeficienta');
 ylabel('optimalna vrednost');
 text(0,B2(0)+1,b2_t)
 hold off
 
-%Najdemo najbolj?e prilagajo?i graf za mno?ico to?k (B3_x,B3_y)
+%Najdemo najboljse prilagajoci graf za mnozico to?k (B3_x,B3_y)
 B3=fit(B3_x',B3_y','linearinterp'); %polinom
-h3=coeffvalues(B3); %koeficjenti polinoma
+h3=coeffvalues(B3); %koeficienti polinoma
 
-%Ali se optimalna resitev spreminja
+%Ali se optimalna resitev spreminja?
 b3=0;
 for i=2:s
     for j=1:4
@@ -129,22 +128,22 @@ if b3~=0;
 else b3_t='Resitev se ne spreminja.';
 end
 
-%Nari?emo graf ter ga shranimo za (B3_x,B3_y)
+%Narisemo graf ter ga shranimo za (B3_x,B3_y)
 fig3b=figure;
 plot(B3, '-r',B3_x,B3_y,'ro');
 hold on
 plot([0],f*prva_resitev,'gx')
-title('Spremembe tretjega koeficjenta omejitvenega vektorja');
-xlabel('sprememba koeficjenta');
+title('Spremembe tretjega koeficienta omejitvenega vektorja');
+xlabel('sprememba koeficienta');
 ylabel('optimalna vrednost');
 text(0,B3(0)+1,b3_t)
 hold off
 
-%Najdemo najbolj?e prilagajo?i graf za mno?ico to?k (B4_x,B4_y)
+%Najdemo najboljse prilagajoci graf za mnozico to?k (B4_x,B4_y)
 B4=fit(B4_x',B4_y','linearinterp'); %polinom
-h4=coeffvalues(B4); %koeficjenti polinoma
+h4=coeffvalues(B4); %koeficienti polinoma
 
-%Ali se optimalna resitev spreminja
+%Ali se optimalna resitev spreminja?
 b4=0;
 for i=2:s
     for j=1:4
@@ -158,14 +157,15 @@ if b4~=0;
 else b4_t='Resitev se ne spreminja.';
 end
 
-%Nari?emo graf ter ga shranimo za (B4_x,B4_y)
+%Narisemo graf ter ga shranimo za (B4_x,B4_y)
 fig4b=figure;
 plot(B4, '-r',B4_x,B4_y,'ro');
 hold on
 plot([0],f*prva_resitev,'gx')
-title('Spremembe cetrtega koeficjenta omejitvenega vektorja');
-xlabel('sprememba koeficjenta');
+title('Spremembe cetrtega koeficienta omejitvenega vektorja');
+xlabel('sprememba koeficienta');
 ylabel('optimalna vrednost');
 text(0,B4(0)+1,b4_t)
 hold off
 end
+

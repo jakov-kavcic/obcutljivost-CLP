@@ -1,6 +1,6 @@
 function [fig,fig1,fig2,fig3,fig4,X1,X2,X3,X4] = obcutljivost_f(A,b,f,s,options)
 
-%dolo?imo spremenljivke, ki morajo biti celo?tevilske
+%dolocimo spremenljivke, ki morajo biti celostevilske
 intcon=[1,2,3,4];
 
 %Dolocimo prvo reisitev
@@ -45,14 +45,14 @@ plot(F1_x,F1_y,'c*',F2_x,F2_y,'k*',F3_x,F3_y,'g*',F4_x,F4_y,'b*',[0],f*prva_resi
 title('Spremembe f-a');
 xlabel('sprememba f');
 ylabel('optimalna vrednost');
-legend('sprememba prvega koeficjenta','sprememba drugega koeficjenta','sprememba tretjega koeficjenta','sprememba cetrtega koeficjenta','originalna resitev');
+legend('sprememba prvega koeficienta','sprememba drugega koeficienta','sprememba tretjega koeficienta','sprememba cetrtega koeficienta','originalna resitev');
 hold off
 
-%Najdemo najbolj?e prilagajo?i polinom druge stopnje za mno?ico to?k (F1_x,F1_y)
+%Najdemo najboljse prilagajoci polinom druge stopnje za mnozico tock (F1_x,F1_y)
 f1=fit(F1_x',F1_y','poly2'); %polinom
-k1=coeffvalues(f1); %koeficjenti polinoma
+k1=coeffvalues(f1); %koeficienti polinoma
 
-%Ali se spreminja re?itev?
+%Ali se spreminja resitev?
 a1=0;
 for i=2:s
     for j=1:4
@@ -66,22 +66,22 @@ if a1~=0;
 else a1_t='Resitev se ne spreminja.';
 end
 
-%Nari?emo graf ter ga shranimo za (F1_x,F1_y)
+%Narisemo graf ter ga shranimo za (F1_x,F1_y)
 fig1=figure;
 plot(f1, '-g',F1_x,F1_y,'c*');
 hold on
 plot([0],f*prva_resitev,'ro')
-title('Spremembe prvega koeficjenta namenske funkcije');
-xlabel('sprememba koeficjenta~');
+title('Spremembe prvega koeficienta namenske funkcije');
+xlabel('sprememba koeficienta~');
 ylabel('optimalna vrednost');
-text(0,f1(0)-1,a1_t) % ena?ba funkcije koeficjenti so k1
+text(0,f1(0)-1,a1_t) % enacba funkcije koeficjenti so k1
 hold off
 
-%Najdemo najbolj?e prilagajo?i polinom druge stopnje za mno?ico to?k (F2_x,F2_y)
+%Najdemo najboljse prilagajoci polinom druge stopnje za mnozico tock (F2_x,F2_y)
 f2=fit(F2_x',F2_y','poly2'); %polinom
-k2=coeffvalues(f2); %koeficjenti polinoma
+k2=coeffvalues(f2); %koeficienti polinoma
 
-%Ali se spreminja re?itev?
+%Ali se spreminja resitev?
 a2=0;
 for i=2:s
     for j=1:4
@@ -95,22 +95,22 @@ if a2~=0;
 else a2_t='Resitev se ne spreminja.';
 end
 
-%Nari?emo graf ter ga shranimo za (F2_x,F2_y)
+%Narisemo graf ter ga shranimo za (F2_x,F2_y)
 fig2=figure;
 plot(f2, '-g',F2_x,F2_y,'co');
 hold on
 plot([0],f*prva_resitev,'ro')
-title('Spremembe drugega koeficjenta namenske funkcije');
-xlabel('sprememba koeficjenta');
+title('Spremembe drugega koeficienta namenske funkcije');
+xlabel('sprememba koeficienta');
 ylabel('optimalna vrednost');
 text(0,f1(0)-1,a2_t)
 hold off
 
-%Najdemo najbolj?e prilagajo?i polinom druge stopnje za mno?ico to?k (F3_x,F3_y)
+%Najdemo najboljse prilagajoci polinom druge stopnje za mnozico tock (F3_x,F3_y)
 f3=fit(F3_x',F3_y','poly2'); %polinom
-k3=coeffvalues(f3); %koeficjenti polinoma
+k3=coeffvalues(f3); %koeficienti polinoma
 
-%Ali se spreminja re?itev?
+%Ali se spreminja resitev?
 a3=0;
 for i=2:s
     for j=1:4
@@ -124,22 +124,22 @@ if a3~=0;
 else a3_t='Resitev se ne spreminja.';
 end
 
-%Nari?emo graf ter ga shranimo za (F3_x,F3_y)
+%Narisemo graf ter ga shranimo za (F3_x,F3_y)
 fig3=figure;
 plot(f3, '-g',F3_x,F3_y,'co');
 hold on
 plot([0],f*prva_resitev,'ro')
-title('Spremembe tretjega koeficjenta namenske funkcije');
-xlabel('sprememba koeficjenta');
+title('Spremembe tretjega koeficienta namenske funkcije');
+xlabel('sprememba koeficienta');
 ylabel('optimalna vrednost');
 text(0,f3(0)-1,a3_t)
 hold off
 
-%Najdemo najbolj?e prilagajo?i polinom druge stopnje za mno?ico to?k (F4_x,F4_y)
+%Najdemo najboljse prilagajoci polinom druge stopnje za mnozico tock (F4_x,F4_y)
 f4=fit(F4_x',F4_y','poly2'); %polinom
-k4=coeffvalues(f4); %koeficjenti polinoma
+k4=coeffvalues(f4); %koeficienti polinoma
 
-%Ali se spreminja re?itev?
+%Ali se spreminja resitev?
 a4=0;
 for i=2:s
     for j=1:4
@@ -153,17 +153,18 @@ if a4~=0;
 else a4_t='Resitev se ne spreminja.';
 end
 
-%Nari?emo graf ter ga shranimo za (F4_x,F4_y)
+%Narisemo graf ter ga shranimo za (F4_x,F4_y)
 fig4=figure;
 plot(f4, '-g',F4_x,F4_y,'co');
 hold on
 plot([0],f*prva_resitev,'ro')
-title('Spremembe cetrtega koeficjenta namenske funkcije');
-xlabel('sprememba koeficjenta');
+title('Spremembe cetrtega koeficienta namenske funkcije');
+xlabel('sprememba koeficienta');
 ylabel('optimalna vrednost');
-text(0,f4(0)-1,a4_t) % ena?ba funkcije koeficjenti so k4
+text(0,f4(0)-1,a4_t) % enacba funkcije koeficienti so k4
 hold off
 
 end
+
 
 
