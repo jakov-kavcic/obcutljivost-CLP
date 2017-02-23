@@ -13,7 +13,7 @@ for i = 1:4
     j=1;
     o=f(i);
     for n = 1:s %naredimo 30 iteracij poskusa
-        df=-10+20*rand(); % random spremenljivka z intervala (-10,10)
+        df=-10+10*rand(); % random spremenljivka z intervala (-10,10) 
         f(i)=f(i)+df;
         [x,fval,exitflag,output]=intlinprog(f,intcon,A,b,[],[],[1,1,1,1],[1000,1000,1000,1000],options);
         F(i,j)=fval;
@@ -43,7 +43,7 @@ X4=X(:,3*s+1:4*s);
 %narisemo vse spremembe skupaj
 fig=figure;
 plot(F1_x,F1_y,'c*',F2_x,F2_y,'k*',F3_x,F3_y,'g*',F4_x,F4_y,'b*',[0],f*prva_resitev,'ro');
-title('Spremembe f-a');
+title('Vpliv namenske funkcije');
 xlabel('sprememba f');
 ylabel('optimalna vrednost');
 legend('sprememba prvega koeficienta','sprememba drugega koeficienta','sprememba tretjega koeficienta','sprememba cetrtega koeficienta','originalna resitev');

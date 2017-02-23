@@ -13,7 +13,7 @@
 % f=[10,10,10,10];   %Vektor namenskih koeficientov
 % b=[12,12,12,12]; %Vektor omejitvenih vrednosti
 
-% % Ta deluje in zanimivi rezultati za spremembe f-a (CLP-2)
+% % % Ta deluje in zanimivi rezultati za spremembe f-a (CLP-2)
 A=[2,6,-3,-3;
     2,4,1,-1;
     -4,-7,-4,-5;

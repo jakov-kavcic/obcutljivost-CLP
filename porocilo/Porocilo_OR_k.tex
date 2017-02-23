@@ -32,10 +32,10 @@
 
 
 Za celoštevilski linearni program oblike
-$$\max\left\{f^Tx; Ax \leq b, x \geq 0, x \in \mathbb{Z}^n \right\}$$
-opazujeva občutljivost optimalne rešitve tega programa, glede na spremembe koeficietov $f$ in $b$. 
+$$\max\left\{f^Tx; Ax \leq b, 1000 \geq x \geq 1, x \in \mathbb{Z}^n \right\}$$
+opazujeva občutljivost optimalne rešitve tega programa, glede na spremembe koeficientov $f$ in $b$. 
 \\[0.5cm]
-V projektu sva si na začetku izbrala začetni celoštevilski linearni program. Matriko $A$ fiksirala, vektorja $f$ in $b$ pa sva spreminjala. Pri tem sva opazovala kaj se zgodi z optimalnimi rešitvami problema, pri različnih koeficientih. Na enkrat sva spreminjala le en koeficient vektorja in pri tem vedno opazovala iteracije glede na začetni program. Za vsako spremembo koeficienta sva po več iteracijah opazovala optimalne rešitve. Te sva za vsak koeficinet prikazala v grafu, kjer sva originalno optimalno rešitev oziroma optimalno rešitev začetnega programa obarvala z drugo barvo. Naredila sva tudi graf, kjer so označene simulacije za celoten vektor, za vse koeficiente.
+V projektu sva si na začetku izbrala začetni celoštevilski linearni program. Matriko $A$ fiksirala, vektorja $f$ in $b$ pa sva spreminjala. Pri tem sva opazovala kaj se zgodi z optimalnimi rešitvami problema, pri različnih koeficientih. Na enkrat sva spreminjala le en koeficient vektorja in pri tem vedno opazovala iteracije glede na začetni program. Za vsako spremembo koeficienta sva po več iteracijah opazovala optimalne vrednosti. Te sva za vsak koeficinet prikazala v grafu, kjer sva originalno optimalno vrednost oziroma optimalno vrednost začetnega programa obarvala z drugo barvo. Naredila sva tudi graf, kjer so označene simulacije za celoten vektor, za vse koeficiente.
 \\[0.5cm]
 Za boljšo prestavo problema, sva naredila tudi primer dvorazsežne izbire vhodnih podatkov in narisala vizualizacijo v tri-dimenzionalnem grafu, kjer so zelo lepo vidne spremembe in učinki spreminjanja koeficientov.
 \\[1cm]
@@ -78,7 +78,7 @@ Rešitve celoštevilskih linearnih programov sva shranjevala v matrikah $X$ ozir
 V primeru analize občutljivost celoštevilskega linearnega programa v odvisnoti do omejitvene funkcije smo optimalne vrednosti in spremembe koeficientov shranili v matriko $B$. Vsaka vstica matrike prestavlja rezultate in motnje iteracij, pri katerih smo spreminjali korespondiran koeficient vektorja,  kjer so lihi členi optimalne vrednosti in sod členi spremembe koeficientov. Torej $B(3,:)$ predstavlja podatke po spreminjanju tretjega koeficienta vektorja $b$. V tem primeru smo otimalne reštitve shanili v matriko $Y$.
 
 
-\section{Analiza občutljivosti celoštevilskega linearnega programa velikosti 4x4}
+\section{Analiza občutljivosti celoštevilskega linearnega programa velikosti $4x4$}
 
 Za primer sva si izbrala celoštevilski linearni program, ki ima matriko $A$ velikosti 4x4 in vektorja $f$ in $b$ velikosti 4. Podatke sva izbrala čisto poljubno in naključno. Prikazala sva dva celoštevilska linearna programa, saj se je pri prvem programu zgodilo, da se optimalna rešitev ni spreminjala pod vplivom $f$-a(CLP-1). Pri drugem pa se optimalne rešitve na zanimiv način spreminjajo pod vplivom $f$-a(CLP-2).
 
@@ -106,7 +106,7 @@ vektorja $b$:
 \includegraphics[width=14cm,height=10cm]{spremembe_b2.png}
 \end{figure}
 
-Iz prvega grafa je razvidno, da četrti koeficient na izbranem intervalu nima vpliva na optimalno vrednost in rešitev programa. S spremembo prvih treh koeficientov spreminjamo množico dopustnih rešitev, kar povzroča da se optimalna vrednost spreminja. Ker zahtevamo, da je optimalna rešitev celoštevilska, opazimo, da se optimalna vrednost spreminja za večkratnike koeficientov namenske funkcije. Za naš sprecifični program se je med analizo spreminjala le druga vrednost optimalne rešitve $x$. Zaradi tega se naša optimalna vrednost spreminja za večkratnike drugega koeficienta namenske funkcije. 
+Iz prvega grafa je razvidno, da četrti koeficient na izbranem intervalu nima vpliva na optimalno vrednost in rešitev programa. S spremembo prvih treh koeficientov spreminjamo množico dopustnih rešitev, kar povzroča da se optimalna vrednost spreminja. Ker zahtevamo, da je optimalna rešitev celoštevilska, opazimo, da se optimalna vrednost spreminja za večkratnike koeficientov namenske funkcije. Za naš specifični program se je med analizo spreminjala le druga vrednost optimalne rešitve $x$. Zaradi tega se naša optimalna vrednost spreminja za večkratnike drugega koeficienta namenske funkcije. 
 Ker imamo problem minimizacije, lahko opazimo, da se ob krčenju množice dopustnih rešitev optimalna vrednost viša. 
 
 

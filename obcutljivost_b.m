@@ -45,7 +45,7 @@ Y4=Y(:,3*s+1:4*s);
 %Narisemo vse spremembe skupaj
 figb=figure;
 plot(B1_x,B1_y,'c*',B2_x,B2_y,'k*',B3_x,B3_y,'g*',B4_x,B4_y,'b*',[0],f*prva_resitev,'ro');
-title('spremembe b-ja');
+title('Vpliv omejitvenega vektorja');
 xlabel('sprememba b');
 ylabel('optimalna vrednost');
 legend('sprememba prvega koeficienta','sprememba drugega koeficienta','sprememba tretjega koeficienta','sprememba cetrtega koeficienta','originalna resitev');
